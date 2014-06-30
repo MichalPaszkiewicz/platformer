@@ -38,9 +38,9 @@
 			});				
 			
 			Q.scene("level1",function(p) {          
-			var background = new Q.TileLayer({ dataAsset: 'level1.json', layerIndex: 0, sheet: 'tiles', tileW: 70, tileH: 70, type: Q.SPRITE_NONE });
+			var background = new Q.TileLayer({ dataAsset: 'level1.json', layerIndex: 0, sheet: 'background', tileW: 70, tileH: 70, type: Q.SPRITE_NONE });
 			p.insert(background);   
-			p.collisionLayer(new Q.TileLayer({ dataAsset: 'level1.json', layerIndex:1,  sheet: 'tiles', tileW: 70, tileH: 70 }));      
+			p.collisionLayer(new Q.TileLayer({ dataAsset: 'level1.json', layerIndex:1,  sheet: 'foreground', tileW: 70, tileH: 70 }));      
 			
 						var player = p.insert(new Q.Player());
 			p.add("viewport").follow(player,{x: true, y: true},{minX: 0, maxX: background.p.w, minY: 0, maxY: background.p.h});
