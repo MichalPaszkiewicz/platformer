@@ -41,11 +41,13 @@
 			var background = new Q.TileLayer({ dataAsset: 'level1.tmx', layerIndex: 0, sheet: 'tiles', tileW: 70, tileH: 70, type: Q.SPRITE_NONE });
 			p.insert(background);   
 			p.collisionLayer(new Q.TileLayer({ dataAsset: 'level1.tmx', layerIndex:1,  sheet: 'tiles', tileW: 70, tileH: 70 }));      
+			
+						var player = p.insert(new Q.Player());
+			p.add("viewport").follow(player,{x: true, y: true},{minX: 0, maxX: background.p.w, minY: 0, maxY: background.p.h});
+	
 			});
 			
-			var player = stage.insert(new Q.Player());
-			stage.add("viewport").follow(player,{x: true, y: true},{minX: 0, maxX: background.p.w, minY: 0, maxY: background.p.h});
-			
+		
 						//load assets
 			Q.load("customTiles.png, player.png, level1.tmx", function() {
 			Q.sheet("tiles","customTiles.png", { tilew: 70, tileh: 70});          
