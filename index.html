@@ -1,57 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src='lib/quintus.js'></script>
-        <script src='lib/quintus_sprites.js'></script>
-        <script src='lib/quintus_scenes.js'></script>
-        <script src='lib/quintus_input.js'></script>
-        <script src='lib/quintus_anim.js'></script>
-        <script src='lib/quintus_2d.js'></script>
-        <script src='lib/quintus_touch.js'></script>
-        <script src='lib/quintus_ui.js'></script>
-    </head>
-    <body style="background-color: black;">
-        <script>
-            var Q = Quintus()
-                .include("Sprites, Scenes, Input, 2D, Touch, UI")
-                .setup({
-                    width: 960,
-                    height: 640
-                }).controls().touch();     
-				
-			Q.Sprite.extend("Player",{
-			init: function(p) {
-			this._super(p, { asset: "player.png", x: 110, y: 50, jumpSpeed: -380});
-			this.add('2d, platformerControls');              
-			},
-			step: function(dt) {
-			if(Q.inputs['left'] && this.p.direction == 'right') {
-				this.p.flip = 'x';
-			} 
-			if(Q.inputs['right']  && this.p.direction == 'left') {
-				this.p.flip = false;                    
-				}
-			}                    
-			});				
-			
-			Q.scene("level1",function(p) {          
-			var background = new Q.TileLayer({ dataAsset: 'level1.json', layerIndex: 0, sheet: 'background', tileW: 70, tileH: 70, type: Q.SPRITE_NONE });
-			p.insert(background);   
-			p.collisionLayer(new Q.TileLayer({ dataAsset: 'level1.json', layerIndex:1,  sheet: 'foreground', tileW: 70, tileH: 70 }));      
-			
-						var player = p.insert(new Q.Player());
-			p.add("viewport").follow(player,{x: true, y: true},{minX: 0, maxX: background.p.w, minY: 0, maxY: background.p.h});
-	
-			});
-			
-		
-						//load assets
-			Q.load("customTiles.png, player.png, level1.json", function() {
-			Q.sheet("tiles","customTiles.png", { tilew: 70, tileh: 70});          
-			Q.stageScene("level1");
-			});	
-        </script>
-    </body>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+<title>Platformer Example</title>
+<script src='../../lib/quintus.js'></script>
+<script src='../../lib/quintus_sprites.js'></script>
+<script src='../../lib/quintus_scenes.js'></script>
+<script src='../../lib/quintus_input.js'></script>
+<script src='../../lib/quintus_anim.js'></script>
+<script src='../../lib/quintus_2d.js'></script>
+<script src='../../lib/quintus_touch.js'></script>
+<script src='../../lib/quintus_ui.js'></script>
+
+<script src='runner.js'></script>
+<style> 
+  body { padding:0px; margin:0px; } 
+</style>
+</head>
+<body>
+</body>
 </html>
